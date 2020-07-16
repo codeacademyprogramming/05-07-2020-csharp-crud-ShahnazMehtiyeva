@@ -1,0 +1,23 @@
+﻿@model Task.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h1>Delete product</h1> @Html.DisplayFor(model => model.Name)
+
+<h5>The action cannot be undone</h5>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <button class="btn btn-default" style="margin-left:5px">
+                @Html.ActionLink("Cancel", "Index", null,
+                        new { @style = "text-decoration:none; color:black" })
+            </button>
+        </div>
+    }
+</div>

@@ -1,0 +1,32 @@
+﻿@model Task.Models.Product
+
+@{
+    ViewBag.Title = "GetUser";
+}
+
+
+<div>
+    <h2>@Html.DisplayFor(model => model.Name)</h2>
+    <hr />
+    <dl >
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to product list", "Index")
+</p>

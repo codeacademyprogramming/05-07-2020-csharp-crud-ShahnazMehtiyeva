@@ -1,0 +1,81 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using Task.Models;
+@model List<Product>
+
+<script src="https://kit.fontawesome.com/00bf07d32d.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="~/Content/Style.css">
+
+<style>
+    .add_button {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        color: #333;
+        border-color: #ccc;
+        background-image: linear-gradient(to bottom,#fff 0,#e0e0e0 100%);
+    }
+
+        .add_button > a {
+            text-decoration: none;
+            color: #333;
+            margin-left:10px;
+        }
+</style>
+<div class="add_button">
+    <i class="fas fa-plus"></i>@Html.ActionLink("Add Product", "Create")
+</div>
+
+<p style="font-weight:bold">Product Name</p>
+<input type="text" id="search" class="form-control" style="margin-bottom:20px" />
+
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(@item.Name.ToString(), "GetUser", new { Id = item.Id })
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.Price.ToString("G29") <i class="fas fa-euro-sign"></i>
+            </td>
+            <td>
+                <button class="btn btn-warning btn-xs"> @Html.ActionLink("Edit", "Edit", new { id = item.Id },
+                            new { @style = "text-decoration:none; color:white" })  </button>
+                <button class="btn btn-danger btn-xs"> @Html.ActionLink("Delete", "Delete", new { id = item.Id },
+                            new {@style = "text-decoration:none; color:white" })</button>
+                
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
